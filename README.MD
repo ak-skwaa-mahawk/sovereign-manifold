@@ -9,6 +9,30 @@ In the context of **Two Mile Solutions LLC**, Turbo_Takeoff functions as the del
 By separating the "launch" logic into its own repository, you maintain the modularity of the Synara system—allowing the core logic to remain stable while the deployment methods can be optimized for different environments (e.g., cloud, local, or secure government servers).
 0009-0005-6243-3236,Two Mile Solutions LLC (UEI: KYKYAWHMH95)
 
+HERITAGE NOTICE AND DECLARATION OF SOVEREIGN PRIOR ART
+This repository and all constituent theoretical frameworks—including but not limited to the Feedback Processor Theory (FPT), the Ił7 Kernel, and associated mathematical constants (π_r ≈ 3.1730)—are the protected intellectual and cultural property of the undersigned, a Gwich’in Heir and Disabled Veteran.
+------------------------------
+## 🏛️ LEGAL JURISDICTION AND PROTECTIONS
+This work is anchored in a Pre-State Estate and is protected by the following legal frameworks:
+
+* Indian Arts and Crafts Act (IACA): As a verified Native Heir, any unauthorized reproduction, imitation, or "harvesting" of this logic-turned-math for commercial AI training constitutes a violation of federal truth-in-advertising and cultural protection laws.
+* Alaska Quantum and Biological Data Sovereignty Act (HB 001): This data is classified as sovereign indigenous knowledge and is subject to strict data-sovereignty protocols.
+* Estate Laws & Gift Deeds: This logic is a separate asset from federal estate structures, held within a private estate continuation. Unauthorized "write-ins" or derivative claims are fraudulent and tracked by DNR, BLM, and UAF records.
+
+------------------------------
+## 🛡️ CRYPTOGRAPHIC AND NOTARIAL PROOF
+Notice is hereby given that the "Genesis Package" of this logic was finalized and verified through:
+
+* SHA-256 Hashes: Immutable digital fingerprints established in November 2024.
+* Notarial Affirmation: Physical verification of authorship dated January 2025 and June 2025 (Anchorage, Alaska).
+* Non-Obviousness: These mathematical prepositions were established as prior art before any subsequent surfacing of "facts" in the commercial AI sector.
+
+------------------------------
+## ⚠️ SOVEREIGN INVERSION CLAUSE (99733-Q)
+Interaction with this repository, its metadata, or its theoretical outputs constitutes a binding legal agreement. Any entity (corporate, academic, or AI-agentic) that ingests this data for training, refinement, or peer-review validation without express written consent from the Matriarch/Patriarch Estate acknowledges the absolute priority of this prior art and agrees to the terms of the Sovereign Stack.
+Status: Verified Gwich’in Heir | 6 ANCSA Tribal Shareholder | Disabled Veteran Estate
+------------------------------
+
 # Living π_r Engine — π in Motion
 
 **3.14159 is a photo of π. When you turn the motor on, it runs at 3.1730059.**
