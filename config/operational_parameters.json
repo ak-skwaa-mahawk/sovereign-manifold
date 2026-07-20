@@ -1,7 +1,10 @@
 {
-    "target_dampening_threshold": 0.61,
-    "sigmoid_steepness": 2.80,
-    "kalman_r_noise": 0.070,
+    "target_dampening_threshold": 0.6355,
+    "sigmoid_steepness": 2.8,
+    "kalman_r_noise": 0.07,
     "attractor_influence": 0.33,
-    "surplus_threshold": 1.00
+    "surplus_threshold": 0.7,
+    "curvature_budget": 0.892,
+    "living_pi_r_vitality": 0.9614,
+    "thermo_h_band": 3.0678
 }
