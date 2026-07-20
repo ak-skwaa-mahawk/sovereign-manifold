@@ -15,8 +15,8 @@ THERMO_MIN_H = 3.04
 THERMO_MAX_H = 3.07
 VITALITY_THRESHOLD = 0.9999
 
-ALPHA = 0.85
-BETA = 0.65
+ALPHA = 0.75
+BETA = 0.50
 
 def fetch_daemon_state() -> Dict[str, float]:
     params_path = os.path.expanduser("~/Turbo_Takeoff/config/operational_parameters.json")
