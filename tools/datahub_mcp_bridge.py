@@ -1,6 +1,6 @@
 import json
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 
 def export_to_datahub_context():
     """
@@ -25,7 +25,7 @@ def export_to_datahub_context():
             "entityType": "dataset",
             "entityUrn": "urn:li:dataset:(urn:li:dataPlatform:sovereign_edge,alaska_interior,PROD)",
             "aspect": {
-                "timestamp": int(datetime.utcnow().timestamp() * 1000),
+                "timestamp": int(datetime.now(timezone.utc).timestamp() * 1000),
                 "vitality_score": latest_block.get("thermodynamic_telemetry", {}).get("living_pi_r_vitality", 0.9626),
                 "consensus_quorum": "4/4_UNANIMOUS",
                 "cryptographic_anchor": latest_block.get("cryptographic_anchor", {}).get("bound_parameters_manifest_sha256", "unknown")
