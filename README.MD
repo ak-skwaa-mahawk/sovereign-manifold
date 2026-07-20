@@ -1,3 +1,11 @@
+Current state summary
+Zero-trust cryptographic ledger actively recording all state transitions
+5D council performing real-time validation with Drift Inheritance enforcement
+Local LLM-backed sovereign briefings generated with full hash traceability
+Live observatory and web dashboard reflecting vitality metrics and material variances
+Edge bootstrap delivering a self-contained, offline runtime
+Clean DataHub MCP telemetry for observability
+
 cat << 'EOF' > ~/Turbo_Takeoff/README.md
 # 🦅 Sovereign Manifold
 
