@@ -2,6 +2,7 @@
 """
 verify_state_ledger.py
 Detached Cryptographic Drift Audit Module tracking 5D Tordial-GS Parameters.
+Includes persistent disk-healing capability.
 """
 import os
 import sys
@@ -52,7 +53,15 @@ def sync_all_manifests():
         sys.exit(1)
         
     if not os.path.exists(params_path):
-        print("⚠️  [AUDIT WARN]: Active config missing. Healing file using ledger records...")
+        print("⚠️  [AUDIT WARN]: Active config missing. Healing file persistently using ledger records...")
+        try:
+            os.makedirs(os.path.dirname(params_path), exist_ok=True)
+            with open(params_path, "w") as f:
+                json.dump(telemetry, f, indent=4)
+            print("💾 [HEALED]: Config file written successfully to disk.")
+        except Exception as e:
+            print(f"❌ [AUDIT FAIL]: Failed to persist healed config: {e}")
+            sys.exit(1)
         return
         
     try:

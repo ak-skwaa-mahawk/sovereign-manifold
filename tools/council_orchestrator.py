@@ -68,7 +68,7 @@ def simulate_5d_agent_debate(deltas: Dict[str, float], current: Dict[str, float]
     kappa = regulated["curvature_budget"]
 
     system_vitality = round((target_damp / LIVING_PI_R) * 4.8, 4)
-    h_band = round(THERMO_MIN_H + (target_damp - 0.61) * 0.5, 4)
+    h_band = round(THERMO_MIN_H + (target_damp - 0.58) * 0.5, 4)
 
     veto_reason = check_drift_inheritance(system_vitality, h_band)
     if veto_reason:
