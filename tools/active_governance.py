@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+"""
+active_governance.py
+5D Autonomous Control Interface for Sovereign Manifold
+Invokes the curvature-regulated council gate and anchors consensus updates.
+"""
+
 import os
 import sys
 import json
@@ -8,11 +14,12 @@ import council_orchestrator
 
 def derive_policy_deltas():
     return {
-        "target_dampening": 0.01,
+        "target_dampening": 0.012,
         "sigmoid_steepness": 0.05,
         "kalman_r_noise": -0.005,
         "attractor_influence": 0.02,
-        "surplus_threshold": -0.05
+        "surplus_threshold": 0.08,
+        "curvature_budget": -0.03
     }
 
 def execute_active_governance():
@@ -21,21 +28,24 @@ def execute_active_governance():
     current_state = council_orchestrator.fetch_daemon_state()
     proposed_deltas = derive_policy_deltas()
     
-    payload = council_orchestrator.simulate_agent_debate(proposed_deltas, current_state)
+    # Delegate to the refined 5D agent debate with Drift Inheritance gating
+    payload = council_orchestrator.simulate_5d_agent_debate(proposed_deltas, current_state)
     if not payload:
-        print("❌ [GOVERNANCE]: System Safe. Policy matrix dropped due to consensus fracture.")
+        print("❌ [GOVERNANCE]: System Safe. Policy matrix dropped due to consensus fracture or Drift Inheritance Veto.")
         sys.exit(1)
         
     telemetry = payload["thermodynamic_telemetry"]
     
     print("🛡️  [GOVERNANCE]: Running 5-dimensional daemon boundary screening...")
+    # Validate core telemetry fields match hard system boundaries
     if not (0.10 <= telemetry["target_dampening_threshold"] <= 1.50): sys.exit("❌ Boundary Fault: target_dampening")
     if not (1.0 <= telemetry["sigmoid_steepness"] <= 5.0): sys.exit("❌ Boundary Fault: sigmoid_steepness")
     if not (0.01 <= telemetry["kalman_r_noise"] <= 0.50): sys.exit("❌ Boundary Fault: kalman_r_noise")
     if not (0.05 <= telemetry["attractor_influence"] <= 0.95): sys.exit("❌ Boundary Fault: attractor_influence")
     if not (0.50 <= telemetry["surplus_threshold"] <= 3.00): sys.exit("❌ Boundary Fault: surplus_threshold")
+    if not (0.00 <= telemetry["living_pi_r_vitality"] <= 0.9999): sys.exit("❌ Boundary Fault: Vitality ceiling exceeded")
         
-    print("✅ [PASS]: Entire multi-variable policy verified safe.")
+    print("✅ [PASS]: Entire multi-variable policy verified safe against Tordial-GS parameters.")
     
     # 1. Flush changes directly to operational config file
     params_path = os.path.expanduser("~/Turbo_Takeoff/config/operational_parameters.json")
