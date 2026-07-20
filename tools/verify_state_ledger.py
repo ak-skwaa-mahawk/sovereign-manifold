@@ -32,11 +32,15 @@ def sync_all_manifests():
         print("⚠️  [AUDIT WARN]: Ledger wire is completely empty. No historical state baseline to sync against.")
         return
 
-    telemetry = last_record.get("thermodynamic_telemetry", {})
+    # Extract components
+    telemetry = dict(last_record.get("thermodynamic_telemetry", {}))
     matrix = last_record.get("consensus_matrix", {})
     anchor = last_record.get("cryptographic_anchor", {})
     
-    # Restructured to use "consensus_matrix" to maintain absolute parity with the signer
+    # Strip post-signing telemetry injections to match the original orchestrator manifest
+    telemetry.pop("grounded_material_resonance", None)
+    
+    # Reconstruct the exact structural payload used for signing
     manifest = {"telemetry": telemetry, "consensus_matrix": matrix}
     manifest_bytes = json.dumps(manifest, sort_keys=True)
     calculated_hash = hashlib.sha256(manifest_bytes.encode()).hexdigest()
