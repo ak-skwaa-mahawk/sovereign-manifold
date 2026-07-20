@@ -1,0 +1,139 @@
+[2026-07-14T06:25:25.884470+00:00] 🚀 Turbo_Takeoff Autopilot Daemon active. Monitoring ingress_payloads/...
+[2026-07-14T06:25:25.885821+00:00] 📥 Processing stable_20260714_060636_328086.json | Confidence: 1.0000
+[2026-07-14T06:25:25.885958+00:00] ⚙️  SYSTEM ADJUSTMENT EXECUTED:
+   -> System Gain          : 2.307
+   -> Modulation Offset    : -0.1203 Hz
+   -> Dampening Coefficient: 0.6116
+   -> Active Directives    : TRUSTED_GRID, ZONE_CORE, STABLE_RESONANT, SYSTEM_ANCHOR
+[2026-07-14T06:25:25.886173+00:00] 🗑️ Cleaned up consumed payload: stable_20260714_060636_328086.json
+[2026-07-14T06:25:26.390303+00:00] 📥 Processing stable_20260714_060648_629760.json | Confidence: 1.0000
+[2026-07-14T06:25:26.390669+00:00] ⚙️  SYSTEM ADJUSTMENT EXECUTED:
+   -> System Gain          : 2.2725
+   -> Modulation Offset    : -0.0547 Hz
+   -> Dampening Coefficient: 0.6078
+   -> Active Directives    : STABLE_RESONANT, TRUSTED_GRID, SYSTEM_ANCHOR, ZONE_CORE
+[2026-07-14T06:25:26.391145+00:00] 🗑️ Cleaned up consumed payload: stable_20260714_060648_629760.json
+[2026-07-14T06:25:26.894899+00:00] 📥 Processing stable_20260714_060727_121591.json | Confidence: 1.0000
+[2026-07-14T06:25:26.895275+00:00] ⚙️  SYSTEM ADJUSTMENT EXECUTED:
+   -> System Gain          : 2.307
+   -> Modulation Offset    : -0.1203 Hz
+   -> Dampening Coefficient: 0.6116
+   -> Active Directives    : STABLE_RESONANT, TRUSTED_GRID, ZONE_CORE, SYSTEM_ANCHOR
+[2026-07-14T06:25:26.895764+00:00] 🗑️ Cleaned up consumed payload: stable_20260714_060727_121591.json
+[2026-07-14T06:25:27.399908+00:00] 📥 Processing stable_20260714_060733_334947.json | Confidence: 1.0000
+[2026-07-14T06:25:27.400474+00:00] ⚙️  SYSTEM ADJUSTMENT EXECUTED:
+   -> System Gain          : 2.2904
+   -> Modulation Offset    : -0.1953 Hz
+   -> Dampening Coefficient: 0.6094
+   -> Active Directives    : TRUSTED_GRID, STABLE_RESONANT, ZONE_CORE, SYSTEM_ANCHOR
+[2026-07-14T06:25:27.401057+00:00] 🗑️ Cleaned up consumed payload: stable_20260714_060733_334947.json
+[2026-07-14T06:25:27.910208+00:00] 📥 Processing stable_20260714_060805_321148.json | Confidence: 1.0000
+[2026-07-14T06:25:27.911394+00:00] ⚙️  SYSTEM ADJUSTMENT EXECUTED:
+   -> System Gain          : 2.307
+   -> Modulation Offset    : -0.1203 Hz
+   -> Dampening Coefficient: 0.6116
+   -> Active Directives    : TRUSTED_GRID, SYSTEM_ANCHOR, ZONE_CORE, STABLE_RESONANT
+[2026-07-14T06:25:27.913143+00:00] 🗑️ Cleaned up consumed payload: stable_20260714_060805_321148.json
+[2026-07-14T06:26:09.653207+00:00] 🚀 Turbo_Takeoff Autopilot Daemon active. Monitoring ingress_payloads/...
+[2026-07-14T06:28:46.702179+00:00] 🚀 Autopilot Daemon initialized.
+[2026-07-14T06:29:57.245284+00:00] 💤 Suspended.
+[2026-07-14T06:30:03.190397+00:00] 🚀 Autopilot Daemon initialized.
+[2026-07-14T06:33:18.625520+00:00] 🔄 Config reloaded and validated successfully.
+[2026-07-14T06:33:18.625947+00:00] 🚀 Autopilot Daemon initialized.
+[2026-07-14T06:33:26.649961+00:00] 🔄 Config reloaded and validated successfully.
+[2026-07-14T06:35:38.817191+00:00] 🔄 Config reloaded and validated.
+[2026-07-14T06:35:38.817544+00:00] 🔌 IPC Socket initialized at run/control.sock
+[2026-07-14T06:35:38.817607+00:00] 🚀 Autopilot Daemon initialized.
+[2026-07-14T06:35:52.839271+00:00] 🔌 Client paired with control interface.
+[2026-07-14T06:36:22.867621+00:00] 📥 Received IPC instruction: SAFE
+[2026-07-14T06:36:22.868456+00:00] 🚨 FAIL-SAFE ACTIVATED: IPC Manual Trigger Override
+[2026-07-14T06:38:55.900130+00:00] 🔄 Config reloaded and validated.
+[2026-07-14T06:38:55.900909+00:00] 🔌 IPC Socket initialized at run/control.sock
+[2026-07-14T06:38:55.901029+00:00] 🚀 Autopilot Daemon initialized.
+[2026-07-14T06:39:05.928498+00:00] 🔌 Client paired with control interface.
+[2026-07-14T06:39:25.943828+00:00] 🔌 Client paired with control interface.
+[2026-07-14T06:39:25.947597+00:00] 📥 Received IPC instruction: SAFE
+[2026-07-14T06:39:25.948438+00:00] 🚨 FAIL-SAFE ACTIVATED: IPC Manual Trigger Override
+[2026-07-14T06:41:08.889569+00:00] 🔄 Config reloaded and validated successfully.
+[2026-07-14T06:41:09.113164+00:00] 🔄 Config reloaded and validated.
+[2026-07-14T06:41:10.049535+00:00] 🔄 Config reloaded and validated.
+[2026-07-14T06:41:26.226794+00:00] 🔄 Config reloaded and validated.
+[2026-07-14T06:41:26.227186+00:00] 🔌 IPC Socket initialized at run/control.sock
+[2026-07-14T06:41:26.227294+00:00] 🚀 Autopilot Daemon initialized.
+[2026-07-14T06:41:56.752920+00:00] 💤 Suspended.
+[2026-07-14T06:42:00.271174+00:00] 🔌 Client paired with control interface.
+[2026-07-14T06:42:20.286752+00:00] 🔌 Client paired with control interface.
+[2026-07-14T06:42:26.297863+00:00] 🔌 Client decoupled from control interface.
+[2026-07-14T15:36:56.486802+00:00] 🔄 Config reloaded and validated.
+[2026-07-14T15:36:56.487848+00:00] 🔌 IPC Socket initialized at run/control.sock
+[2026-07-14T15:36:56.487966+00:00] 🚀 Autopilot Daemon initialized.
+[2026-07-14T15:37:08.515801+00:00] 🔌 Client paired with control interface.
+[2026-07-14T16:37:02.524529+00:00] 🔄 Config reloaded and validated.
+[2026-07-14T16:37:02.525677+00:00] 🔌 IPC Socket initialized at run/control.sock
+[2026-07-14T16:37:02.525760+00:00] 🚀 Autopilot Daemon initialized.
+[2026-07-14T16:37:12.559649+00:00] 🔌 Client paired with control interface.
+[2026-07-14T16:40:46.854434+00:00] 🔄 Config reloaded and validated.
+[2026-07-14T16:40:46.855929+00:00] 🔌 IPC Socket initialized at run/control.sock
+[2026-07-14T16:40:46.856052+00:00] 🚀 Autopilot Daemon initialized.
+[2026-07-14T16:40:56.880756+00:00] 🔌 Client paired with control interface.
+[2026-07-14T16:41:12.892181+00:00] 📥 Received IPC instruction: OVERRIDE
+[2026-07-14T16:41:12.895135+00:00] 🔌 Client decoupled from control interface.
+[2026-07-14T16:41:14.897476+00:00] 🔌 Client paired with control interface.
+[2026-07-14T16:44:05.493419+00:00] 🔄 Config reloaded and validated.
+[2026-07-14T16:44:05.494150+00:00] 🔌 IPC Socket initialized.
+[2026-07-14T16:44:05.494263+00:00] 🚀 Autopilot Daemon initialized.
+[2026-07-14T16:44:15.520672+00:00] 🔌 Client paired.
+[2026-07-14T16:44:29.320288+00:00] 💤 Suspended.
+[2026-07-16T02:54:25.831141+00:00] 🔄 Config reloaded and validated.
+[2026-07-16T02:54:25.832411+00:00] 🔌 IPC Socket initialized.
+[2026-07-16T02:54:25.832532+00:00] 🚀 Autopilot Daemon initialized.
+[2026-07-16T02:54:41.874828+00:00] 🔌 Client paired.
+[2026-07-16T02:54:57.894610+00:00] 🔌 Client paired.
+[2026-07-16T02:54:57.897402+00:00] 📥 Received raw IPC: {"command": "OVERRIDE", "parameters": {"gain": 1.85, "dampening": 0.25}}
+[2026-07-16T02:54:57.898796+00:00] 👮 OPERATOR OVERRIDE ACTIVE. Locked Gain=1.85, Damp=0.25
+[2026-07-16T02:55:11.955229+00:00] 🔌 Client paired.
+[2026-07-16T02:55:11.958886+00:00] 📥 Received raw IPC: {"command": "RELEASE"}
+[2026-07-16T02:55:11.960034+00:00] 🔄 OPERATOR RELINQUISHED CONTROL. Resuming autonomous path.
+[2026-07-16T02:55:11.962043+00:00] 🔄 Config reloaded and validated.
+[2026-07-16T03:13:40.804714+00:00] 🔄 Config reloaded and validated.
+[2026-07-16T03:13:40.806474+00:00] 🔌 IPC Socket initialized.
+[2026-07-16T03:13:40.806598+00:00] 🚀 Autopilot Daemon initialized.
+[2026-07-16T03:13:52.843361+00:00] 🔌 Client paired.
+[2026-07-16T03:13:52.845934+00:00] 📥 Received raw IPC: {"command": "RAW", "payload": "STATUS_QUERY"}
+[2026-07-16T03:13:54.849476+00:00] 🔌 Client decoupled.
+[2026-07-16T03:13:56.852084+00:00] 🔌 Client paired.
+[2026-07-16T03:15:41.782204+00:00] 🔄 Config reloaded and validated.
+[2026-07-16T03:15:41.783260+00:00] 🔌 IPC Socket initialized.
+[2026-07-16T03:15:41.783381+00:00] 🚀 Autopilot Daemon initialized.
+[2026-07-16T03:15:53.483339+00:00] 🔌 Client paired.
+[2026-07-16T03:15:53.535185+00:00] 📥 Received raw IPC: {"command": "RAW", "payload": "STATUS_QUERY"}
+[2026-07-16T03:15:53.537597+00:00] 🔄 Config reloaded and validated.
+[2026-07-16T03:15:53.589645+00:00] 🔌 Client decoupled.
+[2026-07-16T03:15:56.167591+00:00] 🔌 Client paired.
+[2026-07-16T03:15:56.219176+00:00] 📥 Received raw IPC: {"command": "OVERRIDE", "parameters": {"gain": 1.72, "dampening": 0.45}}
+[2026-07-16T03:15:56.220069+00:00] 👮 OPERATOR OVERRIDE ACTIVE. Locked Gain=1.72, Damp=0.45
+[2026-07-16T03:15:56.303713+00:00] 🔌 Client decoupled.
+[2026-07-16T03:15:58.361556+00:00] 🔌 Client paired.
+[2026-07-16T03:15:58.415548+00:00] 📥 Received raw IPC: {"command": "RELEASE"}
+[2026-07-16T03:15:58.417180+00:00] 🔄 OPERATOR RELINQUISHED CONTROL. Resuming autonomous path.
+[2026-07-16T03:15:58.419312+00:00] 🔄 Config reloaded and validated.
+[2026-07-16T03:15:58.508800+00:00] 🔌 Client decoupled.
+[2026-07-16T03:18:30.819192+00:00] 🔄 Config reloaded and validated.
+[2026-07-16T03:18:30.820867+00:00] 🔌 IPC Socket initialized.
+[2026-07-16T03:18:30.821078+00:00] 🚀 Autopilot Daemon initialized.
+[2026-07-16T03:20:26.885309+00:00] 🔄 Config reloaded and validated.
+[2026-07-16T03:20:26.886590+00:00] 🔌 IPC Socket initialized.
+[2026-07-16T03:20:26.886715+00:00] 🚀 Autopilot Daemon initialized.
+[2026-07-16T04:17:53.273814+00:00] 🔄 Config reloaded and validated.
+[2026-07-16T04:17:53.629805+00:00] 🔄 Config reloaded and validated.
+[2026-07-16T04:17:53.657098+00:00] 🔄 Config reloaded and validated.
+[2026-07-16T04:17:53.680664+00:00] 🔄 Config reloaded and validated.
+[2026-07-16T05:05:19.084882+00:00] 🔌 Client paired.
+[2026-07-16T05:05:19.146648+00:00] 📥 Received raw IPC: {"command": "RELEASE"}
+[2026-07-16T05:05:19.148569+00:00] 🔄 OPERATOR RELINQUISHED CONTROL. Resuming autonomous path.
+[2026-07-16T05:05:19.153505+00:00] 🔄 Config reloaded and validated.
+[2026-07-16T05:05:19.239874+00:00] 🔌 Client decoupled.
+[2026-07-16T05:26:42.094210+00:00] 💤 Suspended.
+[2026-07-16T05:30:36.381618+00:00] 🔄 Config reloaded and validated.
+[2026-07-16T05:30:37.273076+00:00] 🔄 Config reloaded and validated.
+[2026-07-16T05:30:37.339983+00:00] 🔄 Config reloaded and validated.

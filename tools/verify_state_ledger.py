@@ -10,7 +10,10 @@ def sync_all_manifests():
     
     print("🔍 [AUDIT]: Commencing cryptographic ledger integrity scan...")
     
+<<<<<<< HEAD
     # 1. Read the absolute last entry in the ledger
+=======
+>>>>>>> d7973f5d32ef626d3c2f0d8d740114c22ebab6ab
     if not os.path.exists(ledger_path):
         print("❌ [AUDIT FAIL]: Public ledger wire asset is missing entirely!")
         sys.exit(1)
@@ -29,11 +32,17 @@ def sync_all_manifests():
         print("⚠️  [AUDIT WARN]: Ledger wire is completely empty. No historical state baseline to sync against.")
         return
 
+<<<<<<< HEAD
     # 2. Extract the signed telemetry blueprint from the block
     telemetry = last_record.get("thermodynamic_telemetry", {})
     anchor = last_record.get("cryptographic_anchor", {})
     
     # Re-verify block finality hash signature
+=======
+    telemetry = last_record.get("thermodynamic_telemetry", {})
+    anchor = last_record.get("cryptographic_anchor", {})
+    
+>>>>>>> d7973f5d32ef626d3c2f0d8d740114c22ebab6ab
     manifest_bytes = json.dumps({"telemetry": telemetry, "matrix": last_record.get("consensus_matrix", {})}, sort_keys=True)
     calculated_hash = hashlib.sha256(manifest_bytes.encode()).hexdigest()
     
@@ -41,7 +50,10 @@ def sync_all_manifests():
         print("🚨 [CRITICAL ALERT]: LEDGER TAMPERING DETECTED! Manifest signature mismatch.")
         sys.exit(1)
         
+<<<<<<< HEAD
     # 3. Pull the active live system parameters
+=======
+>>>>>>> d7973f5d32ef626d3c2f0d8d740114c22ebab6ab
     if not os.path.exists(params_path):
         print("⚠️  [AUDIT WARN]: Active config missing. Healing file using ledger records...")
         return
@@ -53,7 +65,10 @@ def sync_all_manifests():
         print(f"🚨 [AUDIT FAIL]: Operational config file unreadable/corrupted: {e}")
         sys.exit(1)
 
+<<<<<<< HEAD
     # 4. Compare Live System Config against the Last Sealed Ledger Block
+=======
+>>>>>>> d7973f5d32ef626d3c2f0d8d740114c22ebab6ab
     mismatches = []
     mapping = {
         "target_dampening_threshold": "target_dampening_threshold",
@@ -67,7 +82,10 @@ def sync_all_manifests():
         live_val = live_config.get(config_key)
         ledger_val = telemetry.get(ledger_key)
         
+<<<<<<< HEAD
         # Round comparison to eliminate floating point noise variations
+=======
+>>>>>>> d7973f5d32ef626d3c2f0d8d740114c22ebab6ab
         if live_val is None or round(live_val, 4) != round(ledger_val, 4):
             mismatches.append(f"{config_key} (Live: {live_val} vs Ledger: {ledger_val})")
 

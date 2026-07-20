@@ -1,0 +1,79 @@
+{
+  "export_status": "VERIFIED_PORTABLE_PACKET",
+  "checksum_horizon_blocks": 6,
+  "payload_envelope": [
+    {
+      "version": "1.0.0",
+      "timestamp": 1784420196.6842782,
+      "public_verification_anchor": "3ae028503d131034308e363d383c921719d9b22e5e1074b4fe6c2e0581541fbb",
+      "data": {
+        "timestamp": 1784420196.681055,
+        "active_trust": "SIGMOID_CLAMPED",
+        "residual_surplus_velocity": 3.2874,
+        "trend_direction": "ACCELERATING_SURPLUS"
+      },
+      "signature_hash_proof": "3f54256f6f6ef766c3787e1546863a10441f5c56c06a500dad6b3af606886ee2"
+    },
+    {
+      "version": "1.0.0",
+      "timestamp": 1784420284.078411,
+      "public_verification_anchor": "3ae028503d131034308e363d383c921719d9b22e5e1074b4fe6c2e0581541fbb",
+      "data": {
+        "timestamp": 1784420284.0751646,
+        "active_trust": "NOMINAL",
+        "residual_surplus_velocity": 2.6163,
+        "trend_direction": "ACCELERATING_SURPLUS"
+      },
+      "signature_hash_proof": "3cf63e4bd0c53f63985b7655af3e52b07c9b090a8ff5561bc1a9e907d66d78cb"
+    },
+    {
+      "version": "1.0.0",
+      "timestamp": 1784421145.4052825,
+      "public_verification_anchor": "3ae028503d131034308e363d383c921719d9b22e5e1074b4fe6c2e0581541fbb",
+      "data": {
+        "timestamp": 1784421145.4021182,
+        "active_trust": "SIGMOID_CLAMPED",
+        "residual_surplus_velocity": 3.2526,
+        "trend_direction": "ACCELERATING_SURPLUS"
+      },
+      "signature_hash_proof": "e6ee312e16b4a220ba88a6ac5e4462ab453d1a1ab54aac2bb55c81c4de776929"
+    },
+    {
+      "version": "1.0.0",
+      "timestamp": 1784421490.3335788,
+      "public_verification_anchor": "3ae028503d131034308e363d383c921719d9b22e5e1074b4fe6c2e0581541fbb",
+      "data": {
+        "timestamp": 1784421490.3314583,
+        "active_trust": "SIGMOID_CLAMPED",
+        "residual_surplus_velocity": 5.2636,
+        "trend_direction": "ACCELERATING_SURPLUS"
+      },
+      "signature_hash_proof": "958ad44cd76adfeab3c86a8d0da98c3120e59cb312cd377b1f22aae59d6397ac"
+    },
+    {
+      "version": "1.0.0",
+      "timestamp": 1784421596.4117296,
+      "public_verification_anchor": "3ae028503d131034308e363d383c921719d9b22e5e1074b4fe6c2e0581541fbb",
+      "data": {
+        "timestamp": 1784421596.4086359,
+        "active_trust": "SIGMOID_CLAMPED",
+        "residual_surplus_velocity": 1.6124,
+        "trend_direction": "ACCELERATING_SURPLUS"
+      },
+      "signature_hash_proof": "532452ec20aa516a5d58ad1b48bc4503db7329f04ab6de115aaf1ffbcaa93d07"
+    },
+    {
+      "version": "1.0.0",
+      "timestamp": 1784432222.7496555,
+      "public_verification_anchor": "3ae028503d131034308e363d383c921719d9b22e5e1074b4fe6c2e0581541fbb",
+      "data": {
+        "timestamp": 1784432222.7478352,
+        "previous_dampening": 0.5,
+        "target_dampening": 0.53,
+        "adaptation_status": "ADAPTATION_APPLIED",
+        "justification": "High variance detected (Mean: 0.0). Increasing dampening."
+      },
+      "signature_hash_proof": "5910d6bfb86097a440a6b4ff79aa51c615aaf845c524fd6a9d7ca5787da907b6"
+    }
+  ]
+}

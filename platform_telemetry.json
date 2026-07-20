@@ -1,0 +1,13 @@
+{
+  "coordinates": {
+    "X": 3.1936,
+    "Y": -1.4653,
+    "Z": 1.7686
+  },
+  "status": {
+    "gain": 0.9998,
+    "dampening": 0.5001
+  },
+  "system_trust_level": "SIGMOID_CLAMPED",
+  "event": "PREDICTIVE_INTERVENTION"
+}

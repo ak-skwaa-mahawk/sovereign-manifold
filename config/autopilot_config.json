@@ -1,0 +1,16 @@
+{
+  "device_profile": {
+    "model": "Samsung Galaxy S21 Plus",
+    "architecture": "aarch64 (Termux Android)",
+    "backhaul": "Starlink Direct-to-Cell (LTE Band 2/25)",
+    "max_off_grid_payload_bytes": 1024
+  },
+  "daemon_settings": {
+    "polling_interval_sec": 1.0,
+    "off_grid_polling_interval_sec": 10.0
+  },
+  "safety_thresholds": {
+    "min_confidence_threshold": 0.0,
+    "max_unstable_frames": 5
+  }
+}

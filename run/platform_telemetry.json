@@ -1,0 +1,11 @@
+{
+  "source": "TORDIAL_MANIFOLD_AUTOPILOT",
+  "epoch_ms": 1784047274898,
+  "payload_integrity": "SAFE_RECOVERY",
+  "dynamic_gains": {
+    "proportional_gain": 1.0,
+    "frequency_modulation_offset": 0.0
+  },
+  "environment_damping": 0.5,
+  "adaptation_scale": 1.0
+}

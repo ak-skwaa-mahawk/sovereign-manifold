@@ -5,11 +5,17 @@ import hmac
 def simulate_crypto_tree():
     print("🔑 [MOCK BIP-32]: Initializing cryptographic master generation...")
     
+<<<<<<< HEAD
     # 1. Your private master recovery phrase (the core secret)
     master_seed_phrase = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"
     print(f"🌲 Master Root Phrase: '{master_seed_phrase}'")
     
     # 2. Derive the Master Parent Private Key using SHA-512
+=======
+    master_seed_phrase = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"
+    print(f"🌲 Master Root Phrase: '{master_seed_phrase}'")
+    
+>>>>>>> d7973f5d32ef626d3c2f0d8d740114c22ebab6ab
     master_seed_bytes = master_seed_phrase.encode('utf-8')
     master_hash = hmac.new(b"Bitcoin seed", master_seed_bytes, hashlib.sha512).digest()
     
@@ -18,14 +24,21 @@ def simulate_crypto_tree():
     print(f"🔒 Master Parent Key:  0x{master_private_key.hex()[:32]}...")
 
     print("\n🌿 Generating Derived Child Accounts (Leaves):")
+<<<<<<< HEAD
     # 3. Simulate generating 3 unique account addresses from the single parent key
     for index in range(3):
         # We combine the index number with the parent chain code to branch out dynamically
+=======
+    for index in range(3):
+>>>>>>> d7973f5d32ef626d3c2f0d8d740114c22ebab6ab
         data = index.to_bytes(4, byteorder='big')
         child_hash = hmac.new(master_chain_code, master_private_key + data, hashlib.sha512).digest()
         
         child_private_key = child_hash[:32]
+<<<<<<< HEAD
         # Generate a mock public address by hashing the child key
+=======
+>>>>>>> d7973f5d32ef626d3c2f0d8d740114c22ebab6ab
         mock_public_address = hashlib.sha256(child_private_key).hexdigest()[:40]
         
         print(f"   👉 Index {index} -> Public Account Address: 1x{mock_public_address}")

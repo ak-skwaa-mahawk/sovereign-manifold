@@ -1,0 +1,7 @@
+{
+    "target_dampening_threshold": 0.61,
+    "sigmoid_steepness": 2.80,
+    "kalman_r_noise": 0.070,
+    "attractor_influence": 0.33,
+    "surplus_threshold": 1.00
+}
