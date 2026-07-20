@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+verify_state_ledger.py
+Detached Cryptographic Drift Audit Module tracking 5D Tordial-GS Parameters.
+"""
 import os
 import sys
 import json
@@ -10,10 +14,6 @@ def sync_all_manifests():
     
     print("🔍 [AUDIT]: Commencing cryptographic ledger integrity scan...")
     
-<<<<<<< HEAD
-    # 1. Read the absolute last entry in the ledger
-=======
->>>>>>> d7973f5d32ef626d3c2f0d8d740114c22ebab6ab
     if not os.path.exists(ledger_path):
         print("❌ [AUDIT FAIL]: Public ledger wire asset is missing entirely!")
         sys.exit(1)
@@ -32,28 +32,21 @@ def sync_all_manifests():
         print("⚠️  [AUDIT WARN]: Ledger wire is completely empty. No historical state baseline to sync against.")
         return
 
-<<<<<<< HEAD
-    # 2. Extract the signed telemetry blueprint from the block
     telemetry = last_record.get("thermodynamic_telemetry", {})
+    matrix = last_record.get("consensus_matrix", {})
     anchor = last_record.get("cryptographic_anchor", {})
     
-    # Re-verify block finality hash signature
-=======
-    telemetry = last_record.get("thermodynamic_telemetry", {})
-    anchor = last_record.get("cryptographic_anchor", {})
-    
->>>>>>> d7973f5d32ef626d3c2f0d8d740114c22ebab6ab
-    manifest_bytes = json.dumps({"telemetry": telemetry, "matrix": last_record.get("consensus_matrix", {})}, sort_keys=True)
+    # Restructured to use "consensus_matrix" to maintain absolute parity with the signer
+    manifest = {"telemetry": telemetry, "consensus_matrix": matrix}
+    manifest_bytes = json.dumps(manifest, sort_keys=True)
     calculated_hash = hashlib.sha256(manifest_bytes.encode()).hexdigest()
     
     if calculated_hash != anchor.get("bound_parameters_manifest_sha256"):
         print("🚨 [CRITICAL ALERT]: LEDGER TAMPERING DETECTED! Manifest signature mismatch.")
+        print(f"   -> Calculated: {calculated_hash}")
+        print(f"   -> Anchored:   {anchor.get('bound_parameters_manifest_sha256')}")
         sys.exit(1)
         
-<<<<<<< HEAD
-    # 3. Pull the active live system parameters
-=======
->>>>>>> d7973f5d32ef626d3c2f0d8d740114c22ebab6ab
     if not os.path.exists(params_path):
         print("⚠️  [AUDIT WARN]: Active config missing. Healing file using ledger records...")
         return
@@ -65,29 +58,22 @@ def sync_all_manifests():
         print(f"🚨 [AUDIT FAIL]: Operational config file unreadable/corrupted: {e}")
         sys.exit(1)
 
-<<<<<<< HEAD
-    # 4. Compare Live System Config against the Last Sealed Ledger Block
-=======
->>>>>>> d7973f5d32ef626d3c2f0d8d740114c22ebab6ab
     mismatches = []
-    mapping = {
-        "target_dampening_threshold": "target_dampening_threshold",
-        "sigmoid_steepness": "sigmoid_steepness",
-        "kalman_r_noise": "kalman_r_noise",
-        "attractor_influence": "attractor_influence",
-        "surplus_threshold": "surplus_threshold"
-    }
+    mapping = [
+        "target_dampening_threshold",
+        "sigmoid_steepness",
+        "kalman_r_noise",
+        "attractor_influence",
+        "surplus_threshold",
+        "curvature_budget"
+    ]
     
-    for config_key, ledger_key in mapping.items():
-        live_val = live_config.get(config_key)
-        ledger_val = telemetry.get(ledger_key)
+    for key in mapping:
+        live_val = live_config.get(key)
+        ledger_val = telemetry.get(key)
         
-<<<<<<< HEAD
-        # Round comparison to eliminate floating point noise variations
-=======
->>>>>>> d7973f5d32ef626d3c2f0d8d740114c22ebab6ab
         if live_val is None or round(live_val, 4) != round(ledger_val, 4):
-            mismatches.append(f"{config_key} (Live: {live_val} vs Ledger: {ledger_val})")
+            mismatches.append(f"{key} (Live: {live_val} vs Ledger: {ledger_val})")
 
     if mismatches:
         print("🚨 [CRITICAL ALERT]: HARDWARE STATE DRIFT DETECTED WITHOUT COUNCIL QUORUM!")
