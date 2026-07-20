@@ -1,0 +1,19 @@
+/* Core Styling Workspace */
+body {
+  margin: 0;
+  font-family: monospace, sans-serif;
+  background-color: #0a0a0f !important;
+  color: #e2e8f0 !important;
+}
+
+h1, h2, h3, h4, th {
+  color: #ffffff !important;
+}
+
+p, span, td {
+  color: #cbd5e1 !important;
+}
+
+.truncate, strong {
+  color: #94a3b8 !important;
+}
