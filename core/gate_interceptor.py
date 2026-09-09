@@ -26,7 +26,9 @@ def run_gated(
 ) -> subprocess.CompletedProcess:
     """
     Executes a command vector wrapped inside admission-gate.
-    Passes required --resource and optional --action/--charter/--sock.
+    
+    If charter_path is provided without an explicit sock_path, 
+    passes --sock /dev/null/none to force local statutory charter enforcement.
     """
     gate_bin = shutil.which("admission-gate")
     
@@ -34,10 +36,14 @@ def run_gated(
         target_resource = resource or (cmd[0] if cmd else "unknown")
         exec_vector = [gate_bin, "exec", "--action", action, "--resource", target_resource]
 
+        if sock_path:
+            exec_vector.extend(["--sock", sock_path])
+        elif charter_path:
+            # Neutralize ambient socket to ensure local charter rules take precedence
+            exec_vector.extend(["--sock", "/dev/null/none"])
+
         if charter_path and os.path.exists(charter_path):
             exec_vector.extend(["--charter", charter_path])
-        elif sock_path and os.path.exists(sock_path):
-            exec_vector.extend(["--sock", sock_path])
 
         exec_vector.append("--")
         exec_vector.extend(cmd)
@@ -54,7 +60,7 @@ def run_gated(
 
     if res.returncode == 126:
         raise GateVetoException(
-            f"Statutory Veto (Exit 126): Action {action} on {resource or cmd} rejected by admission-gate.\n"
+            f"Statutory Veto (Exit 126): Action '{action}' on '{resource or cmd}' rejected by admission-gate.\n"
             f"Stderr: {res.stderr.strip()}"
         )
 
