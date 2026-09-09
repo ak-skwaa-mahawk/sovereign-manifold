@@ -1,4 +1,3 @@
-from core.gate_interceptor import run_gated, GateVetoException
 #!/usr/bin/env python3
 """
 sovereign_briefing_adapter.py
@@ -11,17 +10,32 @@ import sys
 import json
 import hashlib
 import subprocess
+from pathlib import Path
 from datetime import datetime, timezone
 from typing import Dict, Any, Optional
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from core.gate_interceptor import run_gated, GateVetoException
+
 LIVING_PI_R = 3.1730059
 VITALITY_THRESHOLD = 0.9999
+PROTOCOL_FILE = PROJECT_ROOT / "system_protocol.md"
+
+
+def load_system_protocol() -> str:
+    """Reads system_protocol.md if present to inject governance constraints."""
+    if PROTOCOL_FILE.is_file():
+        return PROTOCOL_FILE.read_text(encoding="utf-8").strip()
+    return ""
+
 
 def call_local_llm(prompt: str, model_path: str) -> str:
     """Invokes the edge-native llama.cpp inference engine to process the narrative briefing."""
     expanded_model = os.path.expanduser(model_path)
-    
-    # Fallback response matrix if hardware lack the compiled binary asset
+
     if not os.path.exists(expanded_model):
         return (
             "[LOCAL TRANSLATION MODE]: Consensus loop completed successfully. "
@@ -29,7 +43,6 @@ def call_local_llm(prompt: str, model_path: str) -> str:
             "Ledger signature verification checked and approved."
         )
 
-    # Core execution string targeting the native deployment path
     command = [
         "llama-cli",
         "-m", expanded_model,
@@ -39,7 +52,7 @@ def call_local_llm(prompt: str, model_path: str) -> str:
         "-c", "2048",
         "--batch-size", "512"
     ]
-    
+
     try:
         charter = os.environ.get("SOVEREIGN_CHARTER_PATH", os.path.expanduser("~/test_canonical_charter.json"))
         res = run_gated(
@@ -57,13 +70,13 @@ def call_local_llm(prompt: str, model_path: str) -> str:
     except Exception as e:
         return f"[WARN]: Inference execution failure: {e}"
 
+
 def generate_sovereign_briefing(
     council_result: Optional[Dict[str, Any]],
     procurement_deltas: Optional[Dict[str, Any]] = None,
     model_path: str = "~/models/phi-2.Q4_K_M.gguf"
 ) -> Dict[str, Any]:
     """Processes system states into an anchored human briefing payload."""
-    
     if council_result is None:
         status = "VETOED"
         vitality = 1.0
@@ -78,7 +91,7 @@ def generate_sovereign_briefing(
         surplus = float(tel.get("surplus_threshold", 0.0))
         dampening = float(tel.get("target_dampening_threshold", 0.0))
         anchor_sha = council_result.get("cryptographic_anchor", {}).get("bound_parameters_manifest_sha256", "N/A")
-        
+
         status = "APPROVED" if vitality < VITALITY_THRESHOLD else "VETOED"
 
     context = {
@@ -93,15 +106,19 @@ def generate_sovereign_briefing(
         "ledger_signature": anchor_sha
     }
 
-    prompt = (
+    protocol = load_system_protocol()
+
+    raw_prompt = (
         f"Context Details:\nStatus: {status}\nVitality: {vitality}\nH-Band: {h_band}\n"
         f"Dampening: {dampening}\nSignature: {anchor_sha}\n\n"
         "Write a concise, plain text operational report explaining why this status was chosen "
         "and confirming that the cryptographic seal is verified. Be objective and calm."
     )
 
+    prompt = f"{protocol}\n\n{raw_prompt}" if protocol else raw_prompt
+
     briefing_text = call_local_llm(prompt, model_path)
-    
+
     briefing_payload = {
         "timestamp": context["timestamp"],
         "status": status,
@@ -112,11 +129,11 @@ def generate_sovereign_briefing(
             "ledger_anchor": anchor_sha
         }
     }
-    
+
     return briefing_payload
 
+
 if __name__ == "__main__":
-    # Test execution harness using standard mock tracking state data
     mock_result = {
         "thermodynamic_telemetry": {
             "living_pi_r_vitality": 0.9343,
@@ -128,7 +145,7 @@ if __name__ == "__main__":
             "bound_parameters_manifest_sha256": "0256e9802672d45985fe80ae849f5cb4ec753cb67c1a4ae84a40c055713eb0c0"
         }
     }
-    
+
     report = generate_sovereign_briefing(mock_result)
     print("\n📝 --- [SOVEREIGN BRIEFING NARRATIVE ATTESTATION] ---")
     print(json.dumps(report, indent=4))
