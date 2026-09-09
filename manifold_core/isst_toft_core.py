@@ -1,3 +1,4 @@
+from core.gate_interceptor import run_gated, GateVetoException
 #!/usr/bin/env python3
 # isst_toft_core.py — Unified Nervous System Core (v1.7.0 Behavioral Routing Engine)
 import os
@@ -203,7 +204,9 @@ class ResonanceStateCore:
         try:
             with open(self.attractor_path, "w") as f:
                 json.dump(attractors, f, indent=2)
-        except:
+        except GateVetoException as gv:
+            return self.sensitive_clamp, f"STATUTORY_GATE_VETO_ENGAGED: {gv}"
+        except Exception:
             pass
 
         return resonance_val, attractors[matched_index] if matched_index != -1 else attractors[0]
@@ -262,8 +265,14 @@ class ResonanceStateCore:
             return self.default_clamp, "NO_ANALYZER_FOUND"
         
         try:
-            import subprocess
-            result = subprocess.run([sys.executable, analyzer_path], capture_output=True, text=True)
+            charter = os.environ.get("SOVEREIGN_CHARTER_PATH", os.path.expanduser("~/test_canonical_charter.json"))
+            result = run_gated(
+                [sys.executable, analyzer_path],
+                resource=analyzer_path,
+                action="PREDICTIVE_ANALYZER_EVAL",
+                charter_path=charter,
+                timeout=15.0
+            )
             if result.returncode == 0:
                 raw_out = result.stdout
                 json_start = raw_out.find("{")

@@ -1,3 +1,4 @@
+from core.gate_interceptor import run_gated, GateVetoException
 #!/usr/bin/env python3
 """
 sovereign_briefing_adapter.py
@@ -40,8 +41,17 @@ def call_local_llm(prompt: str, model_path: str) -> str:
     ]
     
     try:
-        res = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True, timeout=45)
+        charter = os.environ.get("SOVEREIGN_CHARTER_PATH", os.path.expanduser("~/test_canonical_charter.json"))
+        res = run_gated(
+            command,
+            resource=model_path,
+            action="LOCAL_LLM_INFERENCE",
+            charter_path=charter,
+            timeout=45.0
+        )
         return res.stdout.strip()
+    except GateVetoException as gv:
+        return f"[VETO]: Statutory execution veto (POSIX 126): {gv}"
     except subprocess.TimeoutExpired:
         return "[WARN]: Local inference cycle timed out under structural validation window limit."
     except Exception as e:
