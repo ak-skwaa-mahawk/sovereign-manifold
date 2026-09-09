@@ -1,3 +1,4 @@
+import json
 import os
 import sys
 import copy
@@ -11,7 +12,10 @@ from typing import Dict, List
 from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 import openai
-from sentence_transformers import SentenceTransformer
+try:
+    from sentence_transformers import SentenceTransformer
+except ImportError:
+    SentenceTransformer = None
 
 # ===========================
 # Global State
@@ -59,20 +63,24 @@ class FailureCounter:
 
 class SemanticDriftDetector:
     def __init__(self, axioms: dict, model_name: str = "all-MiniLM-L6-v2"):
-        print("🧠 Loading embedding model...")
-        self.model = SentenceTransformer(model_name)
-        axiom_texts = [v for v in axioms.values() if isinstance(v, str) and v.strip()]
-        self.reference_texts = [t.strip() for t in axiom_texts if t.strip()]
-
-        self.reference_embeddings = self.model.encode(self.reference_texts, normalize_embeddings=True)
-        self.composite_reference = np.mean(self.reference_embeddings, axis=0)
-        self.composite_reference /= np.linalg.norm(self.composite_reference)
+        if SentenceTransformer is not None:
+            print("Loading embedding model...")
+            self.model = SentenceTransformer(model_name)
+            axiom_texts = [v for v in axioms.values() if isinstance(v, str) and v.strip()]
+            self.reference_texts = [t.strip() for t in axiom_texts if t.strip()]
+            self.reference_embeddings = self.model.encode(self.reference_texts, normalize_embeddings=True)
+            self.composite_reference = np.mean(self.reference_embeddings, axis=0)
+            self.composite_reference /= np.linalg.norm(self.composite_reference)
+        else:
+            self.model = None
+            self.composite_reference = None
 
     def check(self, text: str) -> float:
-        if not text.strip(): return 0.0
+        if not text.strip() or self.model is None or self.composite_reference is None:
+            return 0.0
         emb = self.model.encode([text], normalize_embeddings=True)[0]
         sim = np.dot(self.composite_reference, emb)
-        return 1.0 - sim
+        return float(1.0 - sim)
 
 class TechnicalValidator:
     def __init__(self):
@@ -198,9 +206,10 @@ class MetaObserver:
 app = FastAPI()
 observer = MetaObserver()
 
+api_key = os.getenv("REAL_API_KEY") or os.getenv("OPENAI_API_KEY") or "sk-dummy-key-for-local-boot"
 client = openai.OpenAI(
-    api_key=os.getenv("REAL_API_KEY"),
-    base_url="https://api.openai.com/v1"  # Change for Grok/Claude as needed
+    api_key=api_key,
+    base_url="https://api.openai.com/v1"
 )
 
 class ChatRequest(BaseModel):
