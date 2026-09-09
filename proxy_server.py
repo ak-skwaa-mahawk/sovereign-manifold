@@ -90,13 +90,20 @@ class TechnicalValidator:
             tmp_path = tmp.name
 
         try:
-            result = subprocess.run(
-                [sys.executable, tmp_path],
-                capture_output=True,
-                text=True,
-                env=restricted_env,
-                timeout=self.timeout
-            )
+            from core.gate_interceptor import run_gated, GateVetoException
+            try:
+                result = run_gated(
+                    [sys.executable, tmp_path],
+                    resource=tmp_path,
+                    action="PYTHON_EVAL",
+                    timeout=self.timeout
+                )
+            except GateVetoException as gv:
+                return type("Result", (), {
+                    "success": False,
+                    "output": "",
+                    "error": f"Admission Gate Veto (126): {str(gv)}"
+                })
             success = result.returncode == 0
             return type("Result", (), {
                 "success": success,
