@@ -13,8 +13,13 @@ import council_orchestrator
 import takeoff_resonance
 
 def derive_policy_deltas(mean_resonance: float, current_damp: float):
-    # If dampening is already climbing, damp the delta to prevent over-optimization vetoes
-    target_delta = 0.05 if current_damp < 0.62 else 0.00
+    # Dynamic thermodynamic governor: relax if approaching upper thermal boundary
+    if current_damp >= 0.625:
+        target_delta = -0.015
+    elif current_damp < 0.610:
+        target_delta = 0.010
+    else:
+        target_delta = 0.000
     
     resonance_mod = round((mean_resonance - 80.0) * 0.001, 4)
     return {
